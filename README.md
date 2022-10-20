@@ -1,5 +1,16 @@
 ### API Optimization
 
+RPC
+
+gRPC
+
+REST 
+
+SOAP
+
+GRAPHQL
+
+EVENT DRIVE DATA ARCHITECTURE
 
 ### Tutorial
 
