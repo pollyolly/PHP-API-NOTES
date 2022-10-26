@@ -67,6 +67,8 @@ EVENT DRIVE DATA ARCHITECTURE
 ```
 ### PHP SINGLE CURL
 ```
+$url = "https://portfolio.iwebitechnology.xyz/wp-json/wp/v2/posts";
+
 $options = array(
          		CURLOPT_RETURNTRANSFER => true, // return web page
          		CURLOPT_HEADER => false, // don't return headers
