@@ -15,8 +15,8 @@ EVENT DRIVE DATA ARCHITECTURE
 ### PHP MULTICURL CALL
 ```
 
-        $url1 = "https://ilc.upd.edu.ph/wp-json/wp/v2/media";
-        $url2 = "https://ilc.upd.edu.ph/wp-json/wp/v2/posts";
+        $url1 = "https://portfolio.iwebitechnology.xyz/wp-json/wp/v2/media";
+        $url2 = "https://portfolio.iwebitechnology.xyz/wp-json/wp/v2/posts";
 
         $multiCurl = curl_multi_init();
 
@@ -26,7 +26,7 @@ EVENT DRIVE DATA ARCHITECTURE
                         CURLOPT_FOLLOWLOCATION => true, // follow redirects
                         CURLOPT_MAXREDIRS => 10, // stop after 10 redirects
                         CURLOPT_ENCODING => "utf8", // handle compressed
-                        CURLOPT_USERAGENT => isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : "iskomuniadad.upd.edu.ph", // name of client
+                        CURLOPT_USERAGENT => isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : "portfolio.iwebitechnology.xyz", // name of client
                         CURLOPT_AUTOREFERER => true, // set referrer on redirect
                         CURLOPT_CONNECTTIMEOUT => 30, // time-out on connect
                         CURLOPT_TIMEOUT => 30, // time-out on response
@@ -65,7 +65,35 @@ EVENT DRIVE DATA ARCHITECTURE
         $data2 = json_decode($response2, true);
 
 ```
+### PHP SINGLE CURL
+```
+$options = array(
+         		CURLOPT_RETURNTRANSFER => true, // return web page
+         		CURLOPT_HEADER => false, // don't return headers
+         		CURLOPT_FOLLOWLOCATION => true, // follow redirects
+         		CURLOPT_MAXREDIRS => 10, // stop after 10 redirects
+         		CURLOPT_ENCODING => "utf8", // handle compressed
+         		CURLOPT_USERAGENT => isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : "portfolio.iwebitechnology.xyz", // name of client
+         		CURLOPT_AUTOREFERER => true, // set referrer on redirect
+    			CURLOPT_CONNECTTIMEOUT => 30, // time-out on connect
+    			CURLOPT_TIMEOUT => 30, // time-out on response
+    		);
+    		$curl = curl_init();
+    		curl_setopt($curl, CURLOPT_URL, $url);
+    //curl_setopt($curl, CURLOPT_POST, 1);
+    		curl_setopt_array($curl, $options);
+    //curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($credentials));
+    //$errmsg = curl_error($curl);
+    // $cinfo = curl_getinfo($curl);
+    		$response = curl_exec($curl);
+    		if(curl_errno($curl)){
+        		throw new Exception(curl_error($curl));
+    		}
+    		curl_close($curl);
+    		$data = json_decode($response, true);
+    		return $data;
 
+```
 ### Tutorial
 
 [Comparing web API](https://youtu.be/NFw0HznpLlM)
