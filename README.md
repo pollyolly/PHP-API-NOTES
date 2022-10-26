@@ -12,6 +12,60 @@ GRAPHQL
 
 EVENT DRIVE DATA ARCHITECTURE
 
+### PHP MULTICURL CALL
+```
+
+        $url1 = "https://ilc.upd.edu.ph/wp-json/wp/v2/media";
+        $url2 = "https://ilc.upd.edu.ph/wp-json/wp/v2/posts";
+
+        $multiCurl = curl_multi_init();
+
+                $options = array(
+                        CURLOPT_RETURNTRANSFER => true, // return web page
+                        CURLOPT_HEADER => false, // don't return headers
+                        CURLOPT_FOLLOWLOCATION => true, // follow redirects
+                        CURLOPT_MAXREDIRS => 10, // stop after 10 redirects
+                        CURLOPT_ENCODING => "utf8", // handle compressed
+                        CURLOPT_USERAGENT => isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : "iskomuniadad.upd.edu.ph", // name of client
+                        CURLOPT_AUTOREFERER => true, // set referrer on redirect
+                        CURLOPT_CONNECTTIMEOUT => 30, // time-out on connect
+                        CURLOPT_TIMEOUT => 30, // time-out on response
+                );
+        $curl1 = curl_init();
+        $curl2 = curl_init();
+
+        curl_setopt_array($curl1, $options); //SET CURLOPT FROM ARRAY
+        curl_setopt_array($curl2, $options);
+
+        curl_setopt($curl1, CURLOPT_URL, $url1); //Add URL to CURLOPT_URL
+        curl_setopt($curl2, CURLOPT_URL, $url2);
+
+        $multiCurl = curl_multi_init();
+        curl_multi_add_handle($multiCurl, $curl1); //ADD CURL TO MULTI CURL
+        curl_multi_add_handle($multiCurl, $curl2);
+
+        $running = null;
+        do {
+                $status = curl_multi_exec($multiCurl, $running);
+                if($status){
+                        curl_multi_select($multiCurl);
+                }
+
+        } while( $running > 0 );
+
+        $response1 = curl_multi_getcontent($curl1);
+        $response2 = curl_multi_getcontent($curl2);
+
+        curl_multi_remove_handle($multiCurl, $curl1);
+        curl_multi_remove_handle($multiCurl, $curl2);
+
+        curl_multi_close($multiCurl);
+
+        $data1 = json_decode($response1, true);
+        $data2 = json_decode($response2, true);
+
+```
+
 ### Tutorial
 
 [Comparing web API](https://youtu.be/NFw0HznpLlM)
