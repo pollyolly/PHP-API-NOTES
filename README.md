@@ -93,7 +93,6 @@ $options = array(
     		}
     		curl_close($curl);
     		$data = json_decode($response, true);
-    		return $data;
 
 ```
 ### Tutorial
