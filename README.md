@@ -120,7 +120,7 @@ DYNAMIC
 ```
 ### PHP SINGLE CURL
 ```
-$url = "https://portfolio.iwebitechnology.xyz/wp-json/wp/v2/posts";
+$url = "https://portfolio.iwebitechnology.xyz/wp-json/wp/v2/posts/?_embed&per_page=3";
 
 $options = array(
          		CURLOPT_RETURNTRANSFER => true, // return web page
