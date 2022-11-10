@@ -154,4 +154,6 @@ $options = array(
 
 ### References
 
+[QUICK TIPS REST API](https://www.restapitutorial.com/lessons/restquicktips.html)
+
 [Best Practices Creating API](https://stackoverflow.blog/2021/10/06/best-practices-for-authentication-and-authorization-for-rest-apis/)
