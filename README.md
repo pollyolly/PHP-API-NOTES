@@ -14,7 +14,7 @@ EVENT DRIVE DATA ARCHITECTURE
 
 ### PHP MULTICURL CALL
 STATIC
-```
+```php
 
         $url1 = "https://portfolio.iwebitechnology.xyz/wp-json/wp/v2/media";
         $url2 = "https://portfolio.iwebitechnology.xyz/wp-json/wp/v2/posts";
@@ -67,7 +67,7 @@ STATIC
 
 ```
 DYNAMIC
-```
+```php
         $urls = array("https://portfolio.iwebitechnology.xyz/wp-json/wp/v2/media", "https://portfolio.iwebitechnology.xyz/wp-json/wp/v2/posts");
         $options = array(
                         CURLOPT_RETURNTRANSFER => true, // return web page
@@ -119,7 +119,7 @@ DYNAMIC
         var_dump($datas[1]);
 ```
 ### PHP SINGLE CURL
-```
+```php
 $url = "https://portfolio.iwebitechnology.xyz/wp-json/wp/v2/posts/?_embed&per_page=3";
 
 $options = array(
