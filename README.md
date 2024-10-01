@@ -158,7 +158,7 @@ $options = array(
 //post_api.php
 $form_json = file_get_contents('php://input');
 $form_data = json_decode($form_json);
-echo json_encode($form_data); 
+echo json_encode($form_data); die();
 //{"contact":"999-9999","name":"Mark","date":"2024-10-01"}
 ```
 ### Tutorial
