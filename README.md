@@ -145,7 +145,7 @@ $options = array(
         		throw new Exception(curl_error($curl));
     		}
     		curl_close($curl);
-    		$data = json_decode($response, true);
+                print_r($response);
 
 ```
 ### Tutorial
