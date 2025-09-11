@@ -1,17 +1,9 @@
 ### API Optimization
-
-RPC
-
-gRPC
-
-REST 
-
-SOAP
-
-GRAPHQL
-
-EVENT DRIVE DATA ARCHITECTURE
-
+- RPC
+- gRPC
+- REST 
+- SOAP
+- GRAPHQL
 ### PHP MULTICURL CALL
 STATIC
 ```php
